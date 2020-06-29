@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../api.service';
 import { HttpErrorResponse } from '@angular/common/http';
-
+declare var M;
 
 @Component({
   selector: 'app-news-card',
@@ -64,6 +64,17 @@ export class NewsCardComponent implements OnInit {
       this.bookmarked = true
       this.bookmarks.push(this.articleData)
       localStorage.setItem('bookmark', JSON.stringify(this.bookmarks));
+      M.toast({html: 'bookmark added!', classes: 'rounded cyan accent-2'});
+    }
+    else {
+      var index = this.bookmarks.findIndex(x => x.source.name == this.articleData.source.name)
+      if (index != -1) {
+        this.bookmarked = false;
+        this.bookmarks.splice(index, 1);
+        localStorage.setItem('bookmark', JSON.stringify(this.bookmarks));
+        M.toast({html: 'bookmark removed!', classes: 'rounded  pink lighten-3'});
+
+      }
     }
   }
 
