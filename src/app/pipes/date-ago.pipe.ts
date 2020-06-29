@@ -26,7 +26,7 @@ export class DateAgoPipe implements PipeTransform {
                 if (counter === 1) {
                     return counter + ' ' + i + ' AGO'; 
                 } else {
-                    return counter + ' ' + i + 'S AHO';
+                    return counter + ' ' + i + 'S AGO';
                 }
         }
     }
