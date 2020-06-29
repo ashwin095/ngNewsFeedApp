@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class ApiService {
 
   private commentsUrl = 'https://cors-anywhere.herokuapp.com/http://cookbookrecipes.in/test.php';
-  private newsUrl = 'http://newsapi.org/v2/top-headlines?' +
+  private newsUrl = 'https://newsapi.org/v2/top-headlines?' +
     'country=us&' +
     'apiKey=6cc609835e51458dab13e2f0808c55eb';
 
