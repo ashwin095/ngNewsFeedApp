@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -26,7 +27,6 @@ export class NewsFeedComponent implements OnInit {
 
   fetchData() {
     var myInst = this;
-    console.log("fetch some JSON data");
     fetch(this.URL)
       .then(response => response.json())
       .then(data => {
@@ -40,14 +40,18 @@ export class NewsFeedComponent implements OnInit {
 
   getData() {
     var myInst = this;
-
     this.service.getNewsUpdates()
       .subscribe((response: any) => {
-        response.articles.forEach(article => {
-          if (myInst.articles.length < 30)
-            myInst.articles.push(article)
+        if (response) {
+          response.forEach(article => {
+            if (myInst.articles.length < 30)
+              myInst.articles.push(article)
+          });
+        }
+      },
+        (err: HttpErrorResponse) => {
+          console.log(err.message);
         });
-      });
   }
 
 

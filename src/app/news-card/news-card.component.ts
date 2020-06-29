@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiService } from '../api.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -43,16 +44,18 @@ export class NewsCardComponent implements OnInit {
       .subscribe(response => {
         this.comments = response;
         this.requiredComments = this.comments.slice(0, 2);
-       // console.log('service', response)
-      });
+      },
+        (err: HttpErrorResponse) => {
+          console.log(err.message);
+        });
   }
 
   updateArticle() {
-    this.newsImage = this.articleData.urlToImage;
+    this.newsImage = this.articleData && this.articleData.urlToImage ? this.articleData.urlToImage : "NA";
     this.author = this.articleData.author && !this.articleData.author.includes("<a href=") ? this.articleData.author : 'Author';
-    this.sourceName = this.articleData.source.name;
-    this.description = this.articleData.description;
-    this.publishedAt = this.articleData.publishedAt;
+    this.sourceName = this.articleData && this.articleData.source && this.articleData.source.name ? this.articleData.source.name : "NA";
+    this.description = this.articleData && this.articleData.description ? this.articleData.description : "NA";
+    this.publishedAt = this.articleData && this.articleData.publishedAt ? this.articleData.publishedAt : "NA";
     this.validateBookMark()
   }
 
