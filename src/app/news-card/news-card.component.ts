@@ -64,7 +64,7 @@ export class NewsCardComponent implements OnInit {
       this.bookmarked = true
       this.bookmarks.push(this.articleData)
       localStorage.setItem('bookmark', JSON.stringify(this.bookmarks));
-      M.toast({html: 'bookmark added!', classes: 'rounded cyan accent-2'});
+      M.toast({html: 'bookmark added!', classes: 'rounded  green darken-1'});
     }
     else {
       var index = this.bookmarks.findIndex(x => x.source.name == this.articleData.source.name)
