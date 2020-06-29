@@ -11,6 +11,8 @@ export class ApiService {
     'country=us&' +
     'apiKey=6cc609835e51458dab13e2f0808c55eb';
 
+  private newsURL2 = `http://newsapi.org/v2/everything?q=bitcoin&from=2020-05-29&sortBy=publishedAt&apiKey=6cc609835e51458dab13e2f0808c55eb`
+
 
   constructor(private httpClient: HttpClient) { }
 
@@ -19,7 +21,7 @@ export class ApiService {
   }
 
   getNewsUpdates() {
-    return this.httpClient.get(this.newsUrl);
+    return this.httpClient.get(this.newsURL2);
 
   }
 }
