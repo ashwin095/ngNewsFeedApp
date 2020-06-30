@@ -23,7 +23,7 @@
         <a *ngIf="!showDescription" class="card-read-more" (click)=showfullDescription()>more</a>
     </div>
     <div class="card-comments col s12">
-        <a *ngIf="comments.length > 2 && !showAllComments" (click)="showAllCommentData()" class="more-comments">view all {{comments.length}} comments</a>
+        <a *ngIf="comments.length > 2" (click)="showAllCommentData()" class="more-comments">view all {{comments.length}} comments</a>
     </div>
     <div *ngFor="let comment of requiredComments">
         <p class="comment-user-name">{{comment.username}}</p>
