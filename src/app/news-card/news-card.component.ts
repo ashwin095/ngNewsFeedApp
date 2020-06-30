@@ -15,6 +15,7 @@ export class NewsCardComponent implements OnInit {
   showComments: boolean = false;
 
   bookmarked: boolean = false;
+  showAllComments:boolean = false;
 
   sourceName: any;
   publishedAt: any;
@@ -51,11 +52,11 @@ export class NewsCardComponent implements OnInit {
   }
 
   updateArticle() {
-    this.newsImage = this.articleData && this.articleData.urlToImage ? this.articleData.urlToImage : "NA";
-    this.author = this.articleData.author && !this.articleData.author.includes("<a href=") ? this.articleData.author : 'Author';
-    this.sourceName = this.articleData && this.articleData.source && this.articleData.source.name ? this.articleData.source.name : "NA";
-    this.description = this.articleData && this.articleData.description ? this.articleData.description : "NA";
-    this.publishedAt = this.articleData && this.articleData.publishedAt ? this.articleData.publishedAt : "NA";
+    this.newsImage = this.articleData && this.articleData['high thumbnail'] ? this.articleData['high thumbnail'] : "NA";
+    this.author = this.articleData && this.articleData.channelname ? this.articleData.author : 'Author';
+    this.sourceName = this.articleData && this.articleData.source && this.articleData.source.name ? this.articleData.source.name : "location";
+    this.description = this.articleData && this.articleData.title ? this.articleData.title : "NA";
+    this.publishedAt = this.articleData && this.articleData.publishedAt ? this.articleData.publishedAt :  Date.now();
     this.validateBookMark()
   }
 
@@ -67,7 +68,7 @@ export class NewsCardComponent implements OnInit {
       M.toast({html: 'bookmark added!', classes: 'rounded  green darken-1'});
     }
     else {
-      var index = this.bookmarks.findIndex(x => x.source.name == this.articleData.source.name)
+      var index = this.bookmarks.findIndex(x => x.id == this.articleData.id)
       if (index != -1) {
         this.bookmarked = false;
         this.bookmarks.splice(index, 1);
@@ -80,11 +81,16 @@ export class NewsCardComponent implements OnInit {
 
   validateBookMark() {
     if (this.bookmarks) {
-      var index = this.bookmarks.findIndex(x => x.source.name == this.articleData.source.name)
+      var index = this.bookmarks.findIndex(x => x.id == this.articleData.id)
       if (index != -1) {
         this.bookmarked = true;
       }
     }
+  }
+
+  showAllCommentData(){
+    this.showAllComments = true;
+    this.requiredComments = this.comments;
   }
 
   showfullDescription() {

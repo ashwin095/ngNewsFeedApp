@@ -43,6 +43,7 @@ export class NewsFeedComponent implements OnInit {
     this.service.getNewsUpdates()
       .subscribe((response: any) => {
         if (response) {
+          console.log(response)
           response.forEach(article => {
             if (myInst.articles.length < 30)
               myInst.articles.push(article)

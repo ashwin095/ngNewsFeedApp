@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
 import { BookMarkComponent } from './book-mark/book-mark.component';
+import { DetailCardComponent } from './detail-card/detail-card.component';
 
 
 
@@ -25,7 +26,8 @@ import { BookMarkComponent } from './book-mark/book-mark.component';
     FooterComponent,
     NewsCardComponent,
     DateAgoPipe,
-    BookMarkComponent
+    BookMarkComponent,
+    DetailCardComponent
   ],
   imports: [
     BrowserModule,

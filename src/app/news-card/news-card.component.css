@@ -114,13 +114,13 @@ font-size: small
     color: grey;
     position: relative;
     bottom: 21px;
-    left: 473px;
+    left: 103px;
     cursor: pointer;
 }
 
 .overflow-control{
     white-space: nowrap; 
-    width: 470px; 
+    width: 100px; 
     overflow: hidden;
     text-overflow: ellipsis; 
 }
